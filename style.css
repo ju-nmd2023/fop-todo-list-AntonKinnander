@@ -1,17 +1,17 @@
-/* Background */
+html,
+body {
+  height: calc(100vh - 1rem);
+}
+
 html {
-  font: 14px/1.5 Arial, sans-serif;
-  background: rgb(37, 11, 199);
+  /* Gradient effect */
+  /* Use div element inside body to fit */
+  background: rgb(122, 122, 182);
 }
 
 body {
-  background: rgb(249, 249, 249);
-  width: auto;
-  height: 97vh;
-  border-radius: 1.25vh;
-  margin: 1.25vh;
-}
-
-section.background {
-  background: rgb(24, 183, 3);
+  background: white;
+  /* 0 0 0 5rem sets border width beyond page, rest creates gradient */
+  box-shadow: 1rem 4rem 11rem 5rem blue;
+  border-radius: 1.618rem;
 }
