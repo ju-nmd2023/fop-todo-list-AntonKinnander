@@ -1,18 +1,42 @@
+* {
+  margin: 0;
+  color: whitesmoke;
+}
+
 html,
 body {
-  height: calc(100vh - 1rem);
+  height: calc(100vh - 1.3rem);
   margin: 0.25rem;
 }
 
 html {
   /* Gradient effect */
   /* Use div element inside body to fit */
-  background: rgb(122, 122, 182);
+  background: rgb(0, 0, 0);
 }
 
 body {
-  background: white;
+  background: #121212;
   /* 0 0 0 5rem sets border width beyond page, rest creates gradient */
-  box-shadow: 1rem 4rem 11rem 5rem blue;
+  box-shadow: 0 0 0 5rem rgb(0, 0, 0);
   border-radius: 1.618rem;
+  border: 0.15rem solid rgb(0, 0, 0);
+}
+
+/* header {
+  background-color: rgb(50, 62, 173);
+  height: 3rem;
+  border-radius: 1.618rem 1.618rem 0 0;
+  box-shadow: 0 0 3rem 0.1rem rgb(0, 0, 0);
+  margin-bottom: 5vh;
+} */
+
+h1 {
+  font-family: monospace;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.card {
+  margin: 1rem 2rem;
 }
