@@ -26,3 +26,5 @@ let divider = {
 //Structure
 // Main container
 // Category divs and item container for that category
+
+document.getElementById("card1").innerHTML("change of plans");
