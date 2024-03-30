@@ -1,6 +1,5 @@
 * {
   margin: 0;
-  color: whitesmoke;
 }
 
 html,
@@ -31,12 +30,39 @@ body {
   margin-bottom: 5vh;
 } */
 
-h1 {
+h1,
+h2 {
   font-family: monospace;
   font-weight: 500;
-  font-size: 1.2rem;
+  color: whitesmoke;
 }
 
-.card {
+h1 {
+  font-size: 1.2rem;
+}
+h2 {
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin: 0.4rem;
+}
+
+.card,
+.divider {
   margin: 1rem 2rem;
+  margin: 0.8rem;
+}
+.card {
+  border-bottom: rgb(36, 36, 36) solid 0.2rem;
+  border-radius: 0;
+}
+
+.divider {
+  background-color: rgb(71, 58, 255);
+  border-radius: 100vh;
+  margin: 2rem 0.4rem 0 0.4rem;
+}
+
+.complete {
+  text-decoration: line-through solid rgb(71, 58, 255);
+  color: lightgray;
 }
