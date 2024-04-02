@@ -31,15 +31,20 @@ body {
 } */
 
 h1,
-h2 {
+h2,
+label {
   font-family: monospace;
   font-weight: 500;
+}
+
+input {
+  margin: 0 0.75rem 0 0.5rem;
 }
 
 h1 {
   font-size: 1.2rem;
 }
-h2 {
+label {
   font-size: 0.8rem;
   font-weight: 800;
   margin: 0.4rem;
@@ -64,5 +69,12 @@ h2 {
 
 .complete {
   text-decoration: line-through solid rgb(71, 58, 255);
+  /* Fix for safari https://stackoverflow.com/questions/51181010/text-decoration-line-through-css-does-not-work-on-safari-with-my-completed-cla*/
+  -webkit-text-decoration: line-through solid rgb(71, 58, 255);
   color: lightgray;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }
