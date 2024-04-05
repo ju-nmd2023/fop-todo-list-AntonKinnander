@@ -23,7 +23,17 @@ body {
 
 header {
   display: flex;
+  flex-direction: row;
   margin-bottom: 0.5rem;
+}
+
+img {
+  /* Disable selection */
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .pageElement {
@@ -32,6 +42,7 @@ header {
   box-shadow: 0 0 0 0.5rem rgb(0, 0, 0);
   border-radius: 1.618rem;
   border: 0.15rem solid rgb(0, 0, 0);
+  font-family: monospace;
 }
 
 #mainTaskList {
@@ -49,7 +60,6 @@ header {
 h1,
 h2,
 label {
-  font-family: monospace;
   font-weight: 500;
 }
 
@@ -57,20 +67,44 @@ input {
   margin: 0 0.75rem 0 0.5rem;
 }
 
-h1 {
-  font-size: 1.2rem;
-}
 label {
   font-size: 0.8rem;
   font-weight: 800;
   margin: 0.4rem;
 }
 
+textarea {
+  box-sizing: border-box;
+  resize: none;
+  font-family: monospace;
+  font-size: 1rem;
+  height: 5rem;
+  color: whitesmoke;
+  /* https://blog.hubspot.com/website/hide-scrollbar-css */
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+  border: 0.12rem solid whitesmoke;
+  /* Create a ddiv or disable default styling */
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+textarea:hover,
+textarea:focus {
+  border: 0.15rem solid whitesmoke;
+}
+
+.card,
+.divider,
+.span {
+  margin: 0.8rem;
+}
 .card,
 .divider {
-  margin: 1rem 2rem;
-  margin: 0.8rem;
-  color: whitesmoke;
+  color: lightgray;
 }
 .card {
   border-bottom: rgb(36, 36, 36) solid 0.2rem;
@@ -93,4 +127,51 @@ label {
 .row {
   display: flex;
   flex-direction: row;
+}
+
+.big {
+  object-fit: fill;
+  height: 100%;
+}
+
+.span {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.5rem 0.9rem;
+  margin: 0 0 0 0.5rem;
+}
+
+#newTaskButton {
+  /* object-fit: fill; */
+  /* display:flex; */
+  /* margin: auto; */
+  height: 5rem;
+  width: 5rem;
+  /* background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(16, 7, 133)); */
+  background-color: rgb(71, 58, 255);
+  color: #fff;
+  border: 0.4rem solid rgb(71, 58, 255);
+  padding: 0.33rem;
+  margin: auto 0;
+  transition: 0.11s;
+  border-radius: 1.618rem;
+}
+
+#newTaskButton:hover {
+  /* background-image: linear-gradient(rgb(119, 0, 119), rgb(80, 0, 80)); */
+  background-color: rgb(16, 7, 133);
+  color: #fff;
+  padding: 0.4rem;
+  border: 0.4rem solid rgb(71, 58, 255);
+  transition: 0.33s;
+}
+
+#newTaskButton:active {
+  border: 0.6rem solid rgb(48, 38, 188);
+  transition: 0.08s;
+  padding: 0.5rem;
+  /* background-image: linear-gradient(rgb(100, 2, 100), rgba(44, 0, 44, 0.63)); */
+  background-color: rgb(16, 7, 133);
+  text-align: center;
+  text-wrap: none;
 }

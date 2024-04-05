@@ -11,8 +11,21 @@
 
 <body>
   <!--maybe change to list instead of divs -->
- <header class="pageElement">
-<input type="button" id = Createtask>
+ <header>
+  <button id="newTaskButton">
+    <img src="assets/plus.svg" alt="Create a new task or category" class="big" />
+  </button>
+  <!-- <div class="pageElement span"> <h1 class="title">Title:</h1>
+
+  </div> -->
+  <textarea
+  rows="3"
+  name="task title"
+  placeholder="Enter task title..."
+  autocomplete="off"
+  class="pageElement span"
+  id="newTaskField"
+></textarea>
 </header>
 
   <section id="mainTaskList" class="list pageElement">
