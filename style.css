@@ -36,6 +36,19 @@ img {
   user-select: none;
 }
 
+/* Remove safari blue border when highlighting input https://www.machform.com/forums/topic/removing-blue-border-from-input-text-field  */
+input:focus,
+textarea {
+  outline: none !important;
+}
+
+input[type="checkbox"] {
+  width: 3em;
+  height: 3rem;
+  accent-color: rgb(85, 108, 255);
+  transition: 1s;
+}
+
 .pageElement {
   background: #121212;
   /* 0 0 0 5rem sets border width beyond page, rest creates gradient */
@@ -85,6 +98,7 @@ textarea {
   scrollbar-width: none; /* for Firefox */
   overflow-y: scroll;
   border: 0.12rem solid whitesmoke;
+  transition: 0.33s;
   /* Create a ddiv or disable default styling */
 }
 
