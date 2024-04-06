@@ -43,9 +43,9 @@ textarea {
 }
 
 input[type="checkbox"] {
-  width: 3em;
-  height: 3rem;
-  accent-color: rgb(85, 108, 255);
+  width: 1rem;
+  height: 1rem;
+  accent-color: rgb(71, 58, 255);
   transition: 1s;
 }
 
@@ -74,6 +74,7 @@ h1,
 h2,
 label {
   font-weight: 500;
+  margin: auto 0;
 }
 
 input {
@@ -155,20 +156,29 @@ textarea:focus {
   margin: 0 0 0 0.5rem;
 }
 
-#newTaskButton {
-  /* object-fit: fill; */
-  /* display:flex; */
-  /* margin: auto; */
-  height: 5rem;
-  width: 5rem;
-  /* background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(16, 7, 133)); */
-  background-color: rgb(71, 58, 255);
-  color: #fff;
-  border: 0.4rem solid rgb(71, 58, 255);
-  padding: 0.33rem;
+button {
   margin: auto 0;
   transition: 0.11s;
   border-radius: 1.618rem;
+  border: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: transparent;
+}
+
+button:hover {
+  width: 1.6rem;
+}
+
+#newTaskButton {
+  background-color: rgb(71, 58, 255);
+  color: #fff;
+  border: 0.4rem solid rgb(71, 58, 255);
+  height: 5rem;
+  width: 5rem;
+  /* background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(16, 7, 133)); */
+
+  padding: 0.33rem;
 }
 
 #newTaskButton:hover {
@@ -188,4 +198,27 @@ textarea:focus {
   background-color: rgb(16, 7, 133);
   text-align: center;
   text-wrap: none;
+}
+
+svg {
+  width: 36px;
+  object-fit: fill;
+}
+
+/* Color changing icons i made last last course */
+/* Svg icon mask repeat fix from Zach Sausier https://stackoverflow.com/questions/55498806/why-is-css-mask-image-not-working-with-no-repeat */
+.icon {
+  background: lightgray;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.icon:hover {
+  background: white;
+  transition: 0.2s;
+}
+
+.delete {
+  -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIxMDAlIj48cGF0aCBkPSJNMjAwLTQ0MHYtODBoNTYwdjgwSDIwMFoiLz48L3N2Zz4=");
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIxMDAlIj48cGF0aCBkPSJNMjAwLTQ0MHYtODBoNTYwdjgwSDIwMFoiLz48L3N2Zz4=");
 }
