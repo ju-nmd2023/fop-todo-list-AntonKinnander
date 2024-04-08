@@ -39,7 +39,7 @@ img {
 /* Remove safari blue border when highlighting input https://www.machform.com/forums/topic/removing-blue-border-from-input-text-field  */
 input:focus,
 textarea {
-  outline: none !important;
+  outline: none;
 }
 
 input[type="checkbox"] {
@@ -135,7 +135,7 @@ textarea:focus {
   text-decoration: line-through solid rgb(71, 58, 255);
   /* Fix for safari https://stackoverflow.com/questions/51181010/text-decoration-line-through-css-does-not-work-on-safari-with-my-completed-cla*/
   -webkit-text-decoration: line-through solid rgb(71, 58, 255);
-  color: lightgray;
+  color: gray !important;
 }
 
 .row {
