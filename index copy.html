@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noto</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <!--maybe change to list instead of divs -->
+  <header>
+    <button id="newTaskButton">
+      <img src="assets/plus.svg" alt="Create a new task or category" class="big" />
+    </button>
+    <!-- <div class="pageElement span"> <h1 class="title">Title:</h1>
+
+  </div> -->
+    <textarea rows="3" name="task title" placeholder="Enter task title..." autocomplete="off" class="pageElement span"
+      id="newTaskField"></textarea>
+  </header>
+
+  <section id="mainTaskList" class="list pageElement">
+    <!-- IDs corresponding to category -->
+    <div class="divider" id="category1">
+      <div class="row">
+
+        <label class="title active">Life goals</label>
+        <div class="row r">
+          <button class="iconNav add ">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>
+          </button>
+          <button class="iconNav edit ">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>
+          </button>
+          <button class="iconNav delete marginRight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="row">
+        <input type="checkbox" name="" id="" />
+        <h1 class="title active">Buy Mongolian realestate</h1>
+        <div class="row r">
+          <button class="icon date">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>
+          </button>
+          <button class="icon edit">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>
+          </button>
+          <button class="icon delete">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- complete before card so the text style overrides, gets priority above card -->
+    <div class="complete card" id="unsorted2">
+      <div class="row">
+        <input type="checkbox" name="" id="" />
+        <h1 class="title" id="card1">Invest in rare fish</h1>
+        <div class="row r">
+          <button class="icon date">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>
+          </button>
+          <button class="icon edit">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>
+          </button>
+          <button class="icon delete">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>
+          </button>
+        </div>
+      </div>
+
+  </section>
+</body>
+
+</html>

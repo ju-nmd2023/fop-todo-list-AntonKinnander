@@ -32,7 +32,15 @@ const taskInput = document.getElementById("newTaskField");
 const taskList = document.getElementById("mainTaskList");
 
 //Event handler button clicked
-//check if task
+//check if localstorage is empty.
+//tasklist.innerHTML = pmessage
+
+//Change to for each in local storage for adding elements, check category
+//delete removes in html, then localstorage?
+//Always update from localstorage
+
+//id tells the program if its a category or a task, default added in main task category
+function pushLocalstorage(title, duedate, category, id) {}
 
 function addCard() {
   if (taskInput.value !== "") {
@@ -66,4 +74,11 @@ function addCard() {
 
 taskAddBtn.addEventListener("click", addCard);
 // Thanks: https://stackoverflow.com/questions/14542062/eventlistener-enter-key
-taskInput.addEventListener("submit", addCard);
+taskInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    if (!event.shiftKey) {
+      event.preventDefault();
+      addCard();
+    }
+  }
+});

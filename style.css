@@ -60,6 +60,7 @@ input[type="checkbox"] {
 
 #mainTaskList {
   height: 100%;
+  overflow-y: scroll;
 }
 
 /* header {
@@ -74,6 +75,16 @@ h1,
 h2 {
   font-weight: 500;
   margin: auto 0;
+}
+
+p {
+  font-weight: 100;
+  font-size: smaller;
+  margin: 3rem auto;
+  color: rgb(69, 69, 69);
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-style: dotted;
 }
 
 input {
@@ -94,15 +105,20 @@ textarea {
   height: 5rem;
   color: whitesmoke;
   /* https://blog.hubspot.com/website/hide-scrollbar-css */
-  -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
-  overflow-y: scroll;
   border: 0.12rem solid whitesmoke;
   transition: 0.33s;
   /* Create a ddiv or disable default styling */
 }
 
-textarea::-webkit-scrollbar {
+textarea,
+#maintaskList {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+}
+
+textarea::-webkit-scrollbar,
+#mainTaskList::-webkit-scrollbar {
   display: none;
 }
 
