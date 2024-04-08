@@ -1,23 +1,8 @@
 //Create tasks, create categories
 
 // Define list item structure.
-let listItem = {
-  title: "Change of value",
-  //date value
-  dueDate: 0,
-  category: "unsorted",
-  statusDone: false,
-  color: "blue",
-  visible: true,
-};
 
-let divider = {
-  category: "",
-  //Keep at top
-  dueDate: -1,
-  color: "blue",
-  visible: true,
-};
+let cards = [];
 
 //Create the list only in css - a flex container
 // list items should use flex,
@@ -40,19 +25,44 @@ const taskList = document.getElementById("mainTaskList");
 //Always update from localstorage
 
 //id tells the program if its a category or a task, default added in main task category
-function pushLocalstorage(title, duedate, category, id) {}
+
+function inputHandler() {
+  let card = {
+    title: "",
+    //date value
+    dueDate: 0,
+    category: "unsorted",
+    statusDone: false,
+    isDivider: false,
+    visible: true,
+  };
+  if (taskInput.value !== "" && taskInput.length <= 150) {
+    card.title = taskInput.value;
+    alert(taskInput.value);
+    //Clear taskInput field
+    taskInput.value = "";
+  } else if (taskInput.length > 150) {
+    alert("Title can't be over 150 characters");
+  }
+}
+
+function updateLocalstorage(card) {
+  for (let card of cards) {
+  }
+}
+function getLocalstorage() {}
 
 function addCard() {
   if (taskInput.value !== "") {
-    let card = document.createElement("div");
-    card.classList.add("card");
+    let htmlCard = document.createElement("div");
+    htmlCard.classList.add("card");
     //Converted to be used as string, create a card with this specific structure, edit variable of title
     //Want the right card structure with the buttons and everything
-    card.innerHTML =
+    htmlCard.innerHTML =
       '      <div class="row">' +
       '        <input type="checkbox" name="" id="" />' +
       '        <h1 class="title active">' +
-      taskInput.value +
+      card.title +
       "</h1>" +
       '        <div class="row r">' +
       '          <button class="icon date">' +
@@ -68,11 +78,10 @@ function addCard() {
       "      </div>";
     // Clear input
     taskList.appendChild(card);
-    taskInput.value = "";
   }
 }
 
-taskAddBtn.addEventListener("click", addCard);
+taskAddBtn.addEventListener("click", inputHandler);
 // Thanks: https://stackoverflow.com/questions/14542062/eventlistener-enter-key
 taskInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
