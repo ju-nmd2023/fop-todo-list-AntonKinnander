@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noto</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noto</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="main.js" defer></script>
-</head>
-
-<body>
-  <!--maybe change to list instead of divs -->
-  <header>
-    <button id="newTaskButton">
-      <img src="assets/plus.svg" alt="Create a new task or category" class="big" />
-    </button>
-    <!-- <div class="pageElement span"> <h1 class="title">Title:</h1>
+  <body>
+    <!--maybe change to list instead of divs -->
+    <header>
+      <button id="newTaskButton">
+        <img
+          src="assets/plus.svg"
+          alt="Create a new task or category"
+          class="big"
+        />
+      </button>
+      <!-- <div class="pageElement span"> <h1 class="title">Title:</h1>
 
   </div> -->
-    <!-- Maybe add a counter showing characther limit -->
-    <textarea rows="3" name="task title" placeholder="Enter task title..." autocomplete="off" class="pageElement span"
-      id="newTaskField" maxlength="150"></textarea>
-  </header>
+      <!-- Maybe add a counter showing characther limit -->
+      <div class="pageElement options span">
+        <textarea
+          rows="3"
+          name="task title"
+          placeholder="Enter task title..."
+          autocomplete="off"
+          class=""
+          id="newTaskField"
+          maxlength="150"
+        ></textarea>
+        <div class="row">
+          <label for="addDate">
+            <button class="icon date" id="addDate">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 10 10"
+              ></svg></button
+            >Due date:</label
+          >
+        </div>
+      </div>
+    </header>
 
-  <section id="mainTaskList" class="list pageElement"></section>
-</body>
-
+    <section id="mainTaskList" class="list pageElement"></section>
+  </body>
 </html>

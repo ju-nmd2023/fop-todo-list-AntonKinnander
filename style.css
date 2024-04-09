@@ -36,6 +36,13 @@ img {
   user-select: none;
 }
 
+fieldset {
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  width: ;
+}
+
 /* Remove safari blue border when highlighting input https://www.machform.com/forums/topic/removing-blue-border-from-input-text-field  */
 input:focus,
 textarea {
@@ -111,6 +118,13 @@ textarea {
   /* Create a ddiv or disable default styling */
 }
 
+label {
+  font-weight: 100;
+  font-size: small;
+  /* color: #242424; */
+  color: whitesmoke;
+}
+
 textarea,
 #maintaskList {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -123,8 +137,12 @@ textarea::-webkit-scrollbar,
   display: none;
 }
 
-textarea:hover,
-textarea:focus {
+.options {
+  transition: 0.11s;
+}
+
+.options:hover,
+.options:focus {
   border: 0.15rem solid whitesmoke;
 }
 
@@ -138,7 +156,7 @@ textarea:focus {
 }
 .card {
   border-bottom: rgb(36, 36, 36) solid 0.2rem;
-  border-radius: 0;
+  border-radius: 0.3rem;
 }
 
 .divider {
