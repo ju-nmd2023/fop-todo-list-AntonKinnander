@@ -36,12 +36,12 @@ img {
   user-select: none;
 }
 
-fieldset {
+/* fieldset {
   margin: 0;
   padding: 0;
   border-width: 0;
   width: ;
-}
+} */
 
 /* Remove safari blue border when highlighting input https://www.machform.com/forums/topic/removing-blue-border-from-input-text-field  */
 input:focus,
@@ -85,23 +85,17 @@ h2 {
 }
 
 p {
-  font-weight: 100;
+  /* font-weight: 100;
   font-size: smaller;
-  margin: 3rem auto;
+  margin: 0rem auto;
   color: rgb(69, 69, 69);
   text-align: center;
   text-decoration: underline;
-  text-decoration-style: dotted;
+  text-decoration-style: dotted; */
 }
 
 input {
   margin: 0 0.75rem 0 0.5rem;
-}
-
-label {
-  font-size: 1rem;
-  font-weight: 800;
-  margin: auto 0.5rem;
 }
 
 textarea {
@@ -109,20 +103,44 @@ textarea {
   resize: none;
   font-family: monospace;
   font-size: 1rem;
-  min-height: 5rem;
-  height: max-content;
+  height: 2.5rem;
   color: whitesmoke;
   /* https://blog.hubspot.com/website/hide-scrollbar-css */
-  border: 0.12rem solid whitesmoke;
   transition: 0.33s;
+  background: transparent;
+  border-width: 0;
+  width: 100%;
+  margin: 0;
   /* Create a ddiv or disable default styling */
 }
 
 label {
+  display: flex;
+  flex-direction: row;
   font-weight: 100;
-  font-size: small;
+  font-size: x-small;
   /* color: #242424; */
   color: whitesmoke;
+  margin: 0;
+  line-height: 1rem;
+}
+
+.optionsRow {
+  display: flex;
+  margin: 0;
+}
+
+p {
+  display: none;
+  transition: 0.11s;
+}
+
+.icon:hover + p {
+  display: flex;
+}
+
+#addDate:hover + label {
+  display: flex;
 }
 
 textarea,
@@ -138,9 +156,12 @@ textarea::-webkit-scrollbar,
 }
 
 .options {
+  box-sizing: border-box;
   transition: 0.11s;
+  height: 5rem;
+  margin: 0;
+  padding: 0;
 }
-
 .options:hover,
 .options:focus {
   border: 0.15rem solid whitesmoke;
