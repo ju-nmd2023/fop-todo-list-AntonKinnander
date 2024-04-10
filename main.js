@@ -30,6 +30,7 @@ const emptyTask = {
 const taskAddBtn = document.getElementById("newTaskButton");
 const taskInput = document.getElementById("newTaskField");
 const taskList = document.getElementById("mainTaskList");
+const dateInput = document.getElementById("addDate");
 
 //Event handler button clicked
 //check if localstorage is empty.
@@ -75,6 +76,9 @@ function addTask(task) {
     '          <button class="icon date">' +
     '            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>' +
     "          </button>" +
+    // '          <p class="dueDate">' +
+    //            getDate +
+    // "          </p>" +
     '          <button class="icon edit">' +
     '            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>' +
     "          </button>" +
