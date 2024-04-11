@@ -3,7 +3,7 @@ let tasks = [];
 const taskInput = document.getElementById("newTaskField");
 const taskList = document.getElementById("mainTaskList");
 const dateInput = document.getElementById("addDate");
-let editing = -1;
+let editID = -1;
 
 loadTasks();
 
@@ -19,8 +19,18 @@ function deleteTask(id) {
 //   }
 // }
 
+function toggleTaskStatus(id) {
+  if (tasks[id].statusDone) {
+    tasks[id].statusDone = false;
+  } else {
+    tasks[id].statusDone = true;
+  }
+  reloadTasks();
+  saveTasks();
+}
+
 function editTask(id) {
-  editing = id;
+  editID = id;
   taskInput.value = tasks[id].title;
   saveTasks();
 }
@@ -50,10 +60,10 @@ function processInput() {
 }
 
 function addTask(task) {
-  if (editing < 0) {
+  if (editID < 0) {
     tasks.push(task);
   } else {
-    tasks[editing].title = taskInput.value;
+    tasks[editID].title = taskInput.value;
   }
   reloadTasks();
   saveTasks();
@@ -86,7 +96,7 @@ function reloadTasks() {
   tasks.forEach((task) => {
     displayTask(task);
   });
-  editing = -1;
+  editID = -1;
 }
 
 function clearAllTasks() {
@@ -98,17 +108,33 @@ function displayTask(task) {
   htmlCard.classList.add("card");
   //Converted to be used as string, create a card with this specific structure, edit variable of title
   //Want the right card structure with the buttons and everything
+  let taskState;
+
+  if (task.statusDone) {
+    taskState = "checked";
+  } else {
+    taskState = "";
+  }
+
   htmlCard.innerHTML =
     '      <div class="row">' +
-    '        <input type="checkbox" name="" id="" />' +
-    '        <h1 class="title active">' +
+    '        <input type="checkbox"' +
+    taskState +
+    ' class="checkTask" />' +
+    '        <h1 class="title ' +
+    taskState +
+    '">' +
     task.title +
     "</h1>" +
     '        <div class="row r">' +
-    '          <button class="icon date" ' +
+    '          <button class="icon date ' +
+    taskState +
+    '" ' +
     '            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>' +
     "          </button>" +
-    '          <button class="icon edit" ' +
+    '          <button class="icon edit ' +
+    taskState +
+    '" ' +
     '            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>' +
     "          </button>" +
     '          <button class="icon delete"' +
@@ -132,6 +158,11 @@ function displayTask(task) {
   editButton.addEventListener("click", function () {
     const id = tasks.indexOf(task);
     editTask(id);
+  });
+  const checkTask = htmlCard.querySelector(".checkTask");
+  checkTask.addEventListener("click", function () {
+    const id = tasks.indexOf(task);
+    toggleTaskStatus(id);
   });
 }
 const taskAddBtn = document.getElementById("newTaskButton");
