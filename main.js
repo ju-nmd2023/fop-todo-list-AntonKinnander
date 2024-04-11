@@ -8,14 +8,7 @@
 
 // Define list item structure.
 
-let tasks = [
-  { title: "swag1" },
-  { title: "swag2" },
-  { title: "swag3" },
-  { title: "swag4" },
-  { title: "swag5" },
-  { title: "swag9" },
-];
+let tasks = [];
 const emptyTask = {
   title: "",
   //date value
@@ -33,10 +26,10 @@ const emptyTask = {
 // Main container
 // Category divs and item container for that category
 
-const taskAddBtn = document.getElementById("newTaskButton");
 const taskInput = document.getElementById("newTaskField");
 const taskList = document.getElementById("mainTaskList");
 const dateInput = document.getElementById("addDate");
+let editing = -1;
 
 //Event handler button clicked
 //check if localstorage is empty.
@@ -48,11 +41,22 @@ const dateInput = document.getElementById("addDate");
 
 //id tells the program if its a category or a task, default added in main task category
 
-updateTasks();
+reloadTasks();
 
-function deleteTask(ID) {
-  tasks.splice(ID, 1);
-  updateTasks();
+function deleteTask(id) {
+  tasks.splice(id, 1);
+  reloadTasks();
+}
+
+function editTask(id) {
+  editing = id;
+  taskInput.value = tasks[id].title;
+}
+function updateTask(id) {
+  tasks[id].title = taskInput.value;
+  removeListen(updateTask);
+  reloadTasks();
+  addListen(processInput);
 }
 
 function processInput() {
@@ -68,21 +72,26 @@ function processInput() {
   if (taskInput.value !== "") {
     task.title = taskInput.value;
     //Clear taskInput field
-    taskInput.value = "";
-    addTask(task);
+    addTask(task, editing);
   }
 }
 
-function addTask(task) {
-  tasks.push(task);
-  updateTasks();
+function addTask(task, editing) {
+  if (editing < 0) {
+    tasks.push(task);
+  } else {
+    tasks[editing].title = taskInput.value;
+  }
+  reloadTasks();
 }
 
-function updateTasks() {
+function reloadTasks() {
+  taskInput.value = "";
   clearAllTasks();
   tasks.forEach((task) => {
     displayTask(task);
   });
+  editing = -1;
 }
 
 function clearAllTasks() {
@@ -115,16 +124,26 @@ function displayTask(task) {
     "          </button>" +
     "        </div>" +
     "      </div>";
-  // Clear input
+
   taskList.appendChild(htmlCard);
 
   const deleteButton = htmlCard.querySelector(".delete");
   deleteButton.addEventListener("click", function () {
     const id = tasks.indexOf(task);
-    confirm("Delete " + tasks[id].title + "?");
-    deleteTask(id);
+    if (
+      confirm("Do you really want to delete this task? \n-" + tasks[id].title)
+    ) {
+      deleteTask(id);
+    }
+  });
+  const editButton = htmlCard.querySelector(".edit");
+  editButton.addEventListener("click", function () {
+    const id = tasks.indexOf(task);
+    editTask(id);
   });
 }
+const taskAddBtn = document.getElementById("newTaskButton");
+
 taskAddBtn.addEventListener("click", processInput);
 // Thanks: https://stackoverflow.com/questions/14542062/eventlistener-enter-key
 taskInput.addEventListener("keydown", function (event) {
