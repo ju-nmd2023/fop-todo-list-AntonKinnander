@@ -190,13 +190,13 @@ textarea::-webkit-scrollbar,
   color: gray !important;
 }
 
-button.checked,
+/* button.checked,
 .icon.checked {
   display: hidden !important;
   -webkit-mask-image: none !important;
   mask-image: none !important;
   background-color: transparent !important;
-}
+} */
 
 .row {
   display: flex;
@@ -281,10 +281,16 @@ svg {
 
 .icon {
   margin: 0 0.15rem;
-  background: rgb(36, 36, 36);
+  background: rgb(84, 84, 88);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 }
+
+button:disabled,
+button:disabled:hover {
+  background: rgb(36, 36, 36);
+}
+
 .iconNav {
   margin: 0.25rem 0.15rem;
   background: #6a72e6;

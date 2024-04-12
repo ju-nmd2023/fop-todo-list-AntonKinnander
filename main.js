@@ -49,13 +49,13 @@ function processInput() {
     statusDone: false,
     isDivider: false,
   };
-  task.title = taskInput.value.trim();
-  if (task.title !== "") {
+
+  if (taskInput.value !== "") {
+    task.title = taskInput.value;
     //Clear taskInput field
     addTask(task);
   } else {
     alert("Please enter a task title :)");
-    taskInput.value = "";
   }
 }
 
@@ -109,14 +109,11 @@ function displayTask(task) {
   //Converted to be used as string, create a card with this specific structure, edit variable of title
   //Want the right card structure with the buttons and everything
   let taskState;
-  let buttonDisbled;
 
   if (task.statusDone) {
     taskState = "checked";
-    buttonDisbled = "disabled";
   } else {
     taskState = "";
-    buttonDisbled = "";
   }
 
   htmlCard.innerHTML =
@@ -130,14 +127,14 @@ function displayTask(task) {
     task.title +
     "</h1>" +
     '        <div class="row r">' +
-    "          <button " +
-    buttonDisbled +
-    ' class="icon date" ' +
+    '          <button class="icon date ' +
+    taskState +
+    '" ' +
     '            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>' +
     "          </button>" +
-    "          <button " +
-    buttonDisbled +
-    ' class="icon edit" ' +
+    '          <button class="icon edit ' +
+    taskState +
+    '" ' +
     '            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>' +
     "          </button>" +
     '          <button class="icon delete"' +
