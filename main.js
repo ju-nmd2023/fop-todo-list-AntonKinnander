@@ -92,6 +92,7 @@ function reloadTasks() {
     displayTask(task);
   });
   editing = -1;
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function clearAllTasks() {
@@ -105,7 +106,7 @@ function displayTask(task) {
   //Want the right card structure with the buttons and everything
   htmlCard.innerHTML =
     '      <div class="row">' +
-    '        <input type="checkbox" name="" id="" />' +
+    '        <input type="checkbox" class="checkbox" checked />' +
     '        <h1 class="title active">' +
     task.title +
     "</h1>" +
@@ -127,7 +128,7 @@ function displayTask(task) {
 
   taskList.appendChild(htmlCard);
 
-  const deleteButton = htmlCard.querySelector(".delete");
+  const deleteButton = htmlCard.querySelector(".checkbox");
   deleteButton.addEventListener("click", function () {
     const id = tasks.indexOf(task);
     if (
