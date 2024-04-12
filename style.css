@@ -183,11 +183,19 @@ textarea::-webkit-scrollbar,
   width: calc(100% - 1rem);
 }
 
-.complete {
+.checked {
   text-decoration: line-through solid rgb(71, 58, 255);
   /* Fix for safari https://stackoverflow.com/questions/51181010/text-decoration-line-through-css-does-not-work-on-safari-with-my-completed-cla*/
   -webkit-text-decoration: line-through solid rgb(71, 58, 255);
   color: gray !important;
+}
+
+button.checked,
+.icon.checked {
+  display: hidden !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  background-color: transparent !important;
 }
 
 .row {
@@ -301,10 +309,7 @@ svg {
   -webkit-mask-image: url("");
   mask-image: url("");
 }
-.empty {
-  -webkit-mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iYSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCA3NzEuNzMgNzcxLjczIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmIgewogICAgICAgIGZpbGw6IG5vbmU7CiAgICAgICAgc3Ryb2tlOiAjMDAwOwogICAgICAgIHN0cm9rZS1saW5lY2FwOiByb3VuZDsKICAgICAgICBzdHJva2UtbGluZWpvaW46IHJvdW5kOwogICAgICAgIHN0cm9rZS13aWR0aDogNzAuMTZweDsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGxpbmUgY2xhc3M9ImIiIHgxPSIzODUuODciIHkxPSIzNS4wOCIgeDI9IjM4NS44NyIgeTI9IjczNi42NSIvPgogIDxsaW5lIGNsYXNzPSJiIiB4MT0iMzUuMDgiIHkxPSIzODUuODciIHgyPSI3MzYuNjUiIHkyPSIzODUuODciLz4KPC9zdmc+");
-  mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iYSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCA3NzEuNzMgNzcxLjczIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmIgewogICAgICAgIGZpbGw6IG5vbmU7CiAgICAgICAgc3Ryb2tlOiAjMDAwOwogICAgICAgIHN0cm9rZS1saW5lY2FwOiByb3VuZDsKICAgICAgICBzdHJva2UtbGluZWpvaW46IHJvdW5kOwogICAgICAgIHN0cm9rZS13aWR0aDogNzAuMTZweDsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGxpbmUgY2xhc3M9ImIiIHgxPSIzODUuODciIHkxPSIzNS4wOCIgeDI9IjM4NS44NyIgeTI9IjczNi42NSIvPgogIDxsaW5lIGNsYXNzPSJiIiB4MT0iMzUuMDgiIHkxPSIzODUuODciIHgyPSI3MzYuNjUiIHkyPSIzODUuODciLz4KPC9zdmc+");
-}
+
 .delete {
   -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLXRyYXNoIj48cG9seWxpbmUgcG9pbnRzPSIzIDYgNSA2IDIxIDYiPjwvcG9seWxpbmU+PHBhdGggZD0iTTE5IDZ2MTRhMiAyIDAgMCAxLTIgMkg3YTIgMiAwIDAgMS0yLTJWNm0zIDBWNGEyIDIgMCAwIDEgMi0yaDRhMiAyIDAgMCAxIDIgMnYyIj48L3BhdGg+PC9zdmc+");
   mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLXRyYXNoIj48cG9seWxpbmUgcG9pbnRzPSIzIDYgNSA2IDIxIDYiPjwvcG9seWxpbmU+PHBhdGggZD0iTTE5IDZ2MTRhMiAyIDAgMCAxLTIgMkg3YTIgMiAwIDAgMS0yLTJWNm0zIDBWNGEyIDIgMCAwIDEgMi0yaDRhMiAyIDAgMCAxIDIgMnYyIj48L3BhdGg+PC9zdmc+");

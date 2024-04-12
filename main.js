@@ -1,62 +1,43 @@
-//Create tasks, create categories
-
-//can have an array for all the tasks in local storage
-//Stringify array of json objects
-//for loop, loop through all taks on page load (array)
-//make sure tasks can be added, status changed and maybe even deleted before implementing local storage'
-//local storage last
-
-// Define list item structure.
-
 let tasks = [];
-const emptyTask = {
-  title: "",
-  //date value
-  dueDate: 0,
-  category: "unsorted",
-  statusDone: false,
-  isDivider: false,
-};
-
-//Create the list only in css - a flex container
-// list items should use flex,
-//Also a divider item, default is ungrouped but users can add their own
-
-//Structure
-// Main container
-// Category divs and item container for that category
 
 const taskInput = document.getElementById("newTaskField");
 const taskList = document.getElementById("mainTaskList");
 const dateInput = document.getElementById("addDate");
-let editing = -1;
+let editID = -1;
 
-//Event handler button clicked
-//check if localstorage is empty.
-//tasklist.innerHTML = pmessage
-
-//Change to for each in local storage for adding elements, check category
-//delete removes in html, then localstorage?
-//Always update from localstorage
-
-//id tells the program if its a category or a task, default added in main task category
-
-reloadTasks();
+loadTasks();
 
 function deleteTask(id) {
   tasks.splice(id, 1);
   reloadTasks();
+  saveTasks();
+}
+
+// function taskListMessage() {
+//   if (tasks.length < 1 || tasks == null) {
+//     taskList.innerHTML;
+//   }
+// }
+
+function toggleTaskStatus(id) {
+  if (tasks[id].statusDone) {
+    tasks[id].statusDone = false;
+  } else {
+    tasks[id].statusDone = true;
+  }
+  reloadTasks();
+  saveTasks();
 }
 
 function editTask(id) {
-  editing = id;
+  editID = id;
   taskInput.value = tasks[id].title;
+  saveTasks();
 }
 function updateTask(id) {
   tasks[id].title = taskInput.value;
-  removeListen(updateTask);
   reloadTasks();
-  addListen(processInput);
+  saveTasks();
 }
 
 function processInput() {
@@ -72,17 +53,41 @@ function processInput() {
   if (taskInput.value !== "") {
     task.title = taskInput.value;
     //Clear taskInput field
-    addTask(task, editing);
+    addTask(task);
+  } else {
+    alert("Please enter a task title :)");
   }
 }
 
-function addTask(task, editing) {
-  if (editing < 0) {
+function addTask(task) {
+  if (editID < 0) {
     tasks.push(task);
   } else {
-    tasks[editing].title = taskInput.value;
+    tasks[editID].title = taskInput.value;
   }
   reloadTasks();
+  saveTasks();
+}
+
+function parseLocalStorage() {
+  tasks = JSON.parse(localStorage.getItem("tasks"));
+  if (tasks == null) {
+    tasks = [""];
+  }
+}
+
+function loadTasks() {
+  parseLocalStorage();
+  if (tasks.length >= 1) {
+    tasks.forEach((task) => {
+      //Clears message that is displayed when the tasklist is empty
+      displayTask(task);
+    });
+  }
+}
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function reloadTasks() {
@@ -91,8 +96,7 @@ function reloadTasks() {
   tasks.forEach((task) => {
     displayTask(task);
   });
-  editing = -1;
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  editID = -1;
 }
 
 function clearAllTasks() {
@@ -104,20 +108,33 @@ function displayTask(task) {
   htmlCard.classList.add("card");
   //Converted to be used as string, create a card with this specific structure, edit variable of title
   //Want the right card structure with the buttons and everything
+  let taskState;
+
+  if (task.statusDone) {
+    taskState = "checked";
+  } else {
+    taskState = "";
+  }
+
   htmlCard.innerHTML =
     '      <div class="row">' +
-    '        <input type="checkbox" class="checkbox" checked />' +
-    '        <h1 class="title active">' +
+    '        <input type="checkbox"' +
+    taskState +
+    ' class="checkTask" />' +
+    '        <h1 class="title ' +
+    taskState +
+    '">' +
     task.title +
     "</h1>" +
     '        <div class="row r">' +
-    '          <button class="icon date" ' +
+    '          <button class="icon date ' +
+    taskState +
+    '" ' +
     '            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>' +
     "          </button>" +
-    // '          <p class="dueDate">' +
-    //            getDate +
-    // "          </p>" +
-    '          <button class="icon edit" ' +
+    '          <button class="icon edit ' +
+    taskState +
+    '" ' +
     '            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>' +
     "          </button>" +
     '          <button class="icon delete"' +
@@ -128,7 +145,7 @@ function displayTask(task) {
 
   taskList.appendChild(htmlCard);
 
-  const deleteButton = htmlCard.querySelector(".checkbox");
+  const deleteButton = htmlCard.querySelector(".delete");
   deleteButton.addEventListener("click", function () {
     const id = tasks.indexOf(task);
     if (
@@ -142,6 +159,11 @@ function displayTask(task) {
     const id = tasks.indexOf(task);
     editTask(id);
   });
+  const checkTask = htmlCard.querySelector(".checkTask");
+  checkTask.addEventListener("click", function () {
+    const id = tasks.indexOf(task);
+    toggleTaskStatus(id);
+  });
 }
 const taskAddBtn = document.getElementById("newTaskButton");
 
@@ -152,4 +174,11 @@ taskInput.addEventListener("keydown", function (event) {
     event.preventDefault();
     processInput();
   }
+});
+
+//Incase
+window.addEventListener("beforeunload", function (e) {
+  saveTasks();
+  //Fix confirmation for this
+  return null;
 });
