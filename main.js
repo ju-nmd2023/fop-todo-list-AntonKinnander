@@ -13,11 +13,14 @@ function deleteTask(id) {
   saveTasks();
 }
 
-// function taskListMessage() {
-//   if (tasks.length < 1 || tasks == null) {
-//     taskList.innerHTML;
-//   }
-// }
+function taskListMessage() {
+  if (tasks.length < 1 || tasks == null) {
+    const paragraph = document.createElement("p");
+    paragraph.innerHTML =
+      "You have no tasks yet. Create a task using the field above.";
+    taskList.appendChild(paragraph);
+  }
+}
 
 function toggleTaskStatus(id) {
   if (tasks[id].statusDone) {
@@ -78,11 +81,10 @@ function parseLocalStorage() {
 
 function loadTasks() {
   parseLocalStorage();
-  if (tasks.length >= 1) {
-    tasks.forEach((task) => {
-      //Clears message that is displayed when the tasklist is empty
-      displayTask(task);
-    });
+  if (tasks.length > 0) {
+    reloadTasks;
+  } else {
+    taskListMessage;
   }
 }
 
@@ -130,11 +132,6 @@ function displayTask(task) {
     task.title +
     "</h1>" +
     '        <div class="row r">' +
-    "          <button " +
-    buttonDisbled +
-    ' class="icon date" ' +
-    '            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"></svg>' +
-    "          </button>" +
     "          <button " +
     buttonDisbled +
     ' class="icon edit" ' +
