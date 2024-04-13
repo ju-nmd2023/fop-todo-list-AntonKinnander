@@ -2,24 +2,28 @@ let tasks = [];
 
 const taskInput = document.getElementById("newTaskField");
 const taskList = document.getElementById("mainTaskList");
-const dateInput = document.getElementById("addDate");
+const taskAddBtn = document.getElementById("newTaskButton");
 let editID = -1;
-
-loadTasks();
 
 function deleteTask(id) {
   tasks.splice(id, 1);
   reloadTasks();
   saveTasks();
+  if (tasks.length < 1) {
+    taskListMessage(1);
+  }
 }
 
-function taskListMessage() {
-  if (tasks.length < 1 || tasks == null) {
-    const paragraph = document.createElement("p");
+function taskListMessage(msg) {
+  const paragraph = document.createElement("p");
+  if (msg == 1) {
     paragraph.innerHTML =
-      "You have no tasks yet. Create a task using the field above.";
-    taskList.appendChild(paragraph);
+      "Nice work!!! :O :o <br> You completed all your tasks!🥳";
+  } else {
+    paragraph.innerHTML =
+      "You have no tasks yet 🦥 <br> Create a task using the field above.";
   }
+  taskList.appendChild(paragraph);
 }
 
 function toggleTaskStatus(id) {
@@ -78,10 +82,10 @@ function parseLocalStorage() {
 
 function loadTasks() {
   parseLocalStorage();
-  if (tasks.length > 0) {
-    reloadTasks;
+  if (tasks.length <= 0) {
+    taskListMessage();
   } else {
-    taskListMessage;
+    reloadTasks();
   }
 }
 
@@ -162,7 +166,8 @@ function displayTask(task) {
     toggleTaskStatus(id);
   });
 }
-const taskAddBtn = document.getElementById("newTaskButton");
+
+loadTasks();
 
 taskAddBtn.addEventListener("click", processInput);
 // Thanks: https://stackoverflow.com/questions/14542062/eventlistener-enter-key

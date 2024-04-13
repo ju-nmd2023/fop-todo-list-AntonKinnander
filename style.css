@@ -90,12 +90,11 @@ h2 {
 }
 
 p {
-  /* font-weight: 100;
+  font-weight: 100;
   font-size: smaller;
-  margin: 0rem auto;
-  color: rgb(69, 69, 69);
+  margin: 1rem 0.8rem;
+  color: rgb(84, 84, 88);
   text-align: center;
-*/
 }
 
 input {
@@ -111,7 +110,7 @@ textarea {
   resize: none;
   font-family: monospace;
   font-size: 1rem;
-  height: 2.5rem;
+  height: 100%;
   color: whitesmoke;
   /* https://blog.hubspot.com/website/hide-scrollbar-css */
   transition: 0.33s;
