@@ -1,41 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=2.0" />
-    <title>Plusle</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="main.js" defer></script>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-  </head>
 
-  <body>
-    <!--maybe change to list instead of divs -->
-    <header>
-      <button id="newTaskButton">
-        <img
-          src="assets/plus.svg"
-          alt="Create a new task or category"
-          class="big"
-        />
-      </button>
-      <!-- <div class="pageElement span"> <h1 class="title">Title:</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plusle</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+</head>
+
+<body>
+  <!--maybe change to list instead of divs -->
+  <header>
+    <button id="newTaskButton">
+      <img src="assets/plus.svg" alt="Create a new task or category" class="big" />
+    </button>
+    <!-- <div class="pageElement span"> <h1 class="title">Title:</h1>
 
   </div> -->
-      <!-- Maybe add a counter showing characther limit -->
-      <div class="pageElement options span">
-        <textarea
-          rows="6"
-          name="task title"
-          placeholder="Enter task title..."
-          autocomplete="off"
-          class=""
-          id="newTaskField"
-          maxlength="150"
-        ></textarea>
-      </div>
-    </header>
+    <!-- Maybe add a counter showing characther limit -->
+    <div class="pageElement options span">
+      <textarea rows="6" name="task title" placeholder="Enter task title..." autocomplete="off" class=""
+        id="newTaskField" maxlength="150"></textarea>
+    </div>
+  </header>
 
-    <section id="mainTaskList" class="list pageElement"></section>
-  </body>
+  <section id="mainTaskList" class="list pageElement"></section>
+</body>
+
 </html>
