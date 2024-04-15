@@ -45,15 +45,38 @@ textarea {
 input[type="checkbox"] {
   width: 2rem;
   height: 2rem;
-  accent-color: rgb(71, 58, 255);
-  background-color: white;
+  accent-color: ;
   border-radius: 0.75rem;
   vertical-align: middle;
-  border: 1px solid #ddd;
+  border: 0.25rem solid #c5bbbb;
+  background-color: whitesmoke;
   appearance: none;
   -webkit-appearance: none;
   outline: none;
   cursor: pointer;
+}
+input[type="checkbox"]:checked {
+  /* -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLXgiPjxsaW5lIHgxPSIxOCIgeTE9IjYiIHgyPSI2IiB5Mj0iMTgiPjwvbGluZT48bGluZSB4MT0iNiIgeTE9IjYiIHgyPSIxOCIgeTI9IjE4Ij48L2xpbmU+PC9zdmc+");
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLXgiPjxsaW5lIHgxPSIxOCIgeTE9IjYiIHgyPSI2IiB5Mj0iMTgiPjwvbGluZT48bGluZSB4MT0iNiIgeTE9IjYiIHgyPSIxOCIgeTI9IjE4Ij48L2xpbmU+PC9zdmc+"); */
+  border: 0.25rem solid rgb(15, 7, 127);
+  background-color: rgb(69, 58, 245);
+}
+input:checked + .check {
+  /* make it clickthrough https://stackoverflow.com/questions/3680429/click-through-div-to-underlying-elements*/
+  pointer-events: none;
+  width: 1rem;
+  height: 1rem;
+  padding: 0.5rem;
+  position: absolute;
+  mask-origin: fill-box;
+  color: #fff;
+  background-color: #fff;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTQ4MCAxMjhjMCA4LjE4OC0zLjEyNSAxNi4zOC05LjM3NSAyMi42MmwtMjU2IDI1NkMyMDguNCA0MTIuOSAyMDAuMiA0MTYgMTkyIDQxNnMtMTYuMzgtMy4xMjUtMjIuNjItOS4zNzVsLTEyOC0xMjhDMzUuMTMgMjcyLjQgMzIgMjY0LjIgMzIgMjU2YzAtMTguMjggMTQuOTUtMzIgMzItMzJjOC4xODggMCAxNi4zOCAzLjEyNSAyMi42MiA5LjM3NUwxOTIgMzM4LjhsMjMzLjQtMjMzLjRDNDMxLjYgOTkuMTMgNDM5LjggOTYgNDQ4IDk2QzQ2NS4xIDk2IDQ4MCAxMDkuNyA0ODAgMTI4eiIvPjwvc3ZnPg==");
+  mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTQ4MCAxMjhjMCA4LjE4OC0zLjEyNSAxNi4zOC05LjM3NSAyMi42MmwtMjU2IDI1NkMyMDguNCA0MTIuOSAyMDAuMiA0MTYgMTkyIDQxNnMtMTYuMzgtMy4xMjUtMjIuNjItOS4zNzVsLTEyOC0xMjhDMzUuMTMgMjcyLjQgMzIgMjY0LjIgMzIgMjU2YzAtMTguMjggMTQuOTUtMzIgMzItMzJjOC4xODggMCAxNi4zOCAzLjEyNSAyMi42MiA5LjM3NUwxOTIgMzM4LjhsMjMzLjQtMjMzLjRDNDMxLjYgOTkuMTMgNDM5LjggOTYgNDQ4IDk2QzQ2NS4xIDk2IDQ4MCAxMDkuNyA0ODAgMTI4eiIvPjwvc3ZnPg==");
 }
 
 .pageElement {

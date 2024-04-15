@@ -130,6 +130,8 @@ function displayTask(task) {
     '        <input type="checkbox"' +
     taskState +
     ' class="checkTask" />' +
+    '      <div class = "check">' +
+    "        </div>" +
     '        <h1 class="title ' +
     taskState +
     '">' +
