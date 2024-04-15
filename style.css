@@ -36,13 +36,6 @@ img {
   user-select: none;
 }
 
-/* fieldset {
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-  width: ;
-} */
-
 /* Remove safari blue border when highlighting input https://www.machform.com/forums/topic/removing-blue-border-from-input-text-field  */
 input:focus,
 textarea {
@@ -70,14 +63,6 @@ input[type="checkbox"] {
   overflow-y: scroll;
 }
 
-/* header {
-  background-color: rgb(50, 62, 173);
-  height: 3rem;
-  border-radius: 1.618rem 1.618rem 0 0;
-  box-shadow: 0 0 3rem 0.1rem rgb(0, 0, 0);
-  margin-bottom: 5vh;
-} */
-
 h1,
 h2 {
   font-weight: 500;
@@ -92,7 +77,7 @@ h2 {
 p {
   font-weight: 100;
   font-size: smaller;
-  margin: 1rem 0.8rem;
+  margin: 2rem 0rem;
   color: rgb(84, 84, 88);
   text-align: center;
 }
@@ -189,14 +174,6 @@ textarea::-webkit-scrollbar,
   color: gray !important;
 }
 
-/* button.checked,
-.icon.checked {
-  display: hidden !important;
-  -webkit-mask-image: none !important;
-  mask-image: none !important;
-  background-color: transparent !important;
-} */
-
 .row {
   display: flex;
   flex-direction: row;
@@ -221,6 +198,7 @@ textarea::-webkit-scrollbar,
 }
 
 #newTaskButton {
+  box-sizing: border-box;
   margin: auto 0;
   border-radius: 1.618rem;
   background-color: rgb(71, 58, 255);
@@ -251,11 +229,14 @@ textarea::-webkit-scrollbar,
   text-align: center;
   text-wrap: none;
 }
+button:disabled,
+button:disabled:hover {
+  background: rgb(36, 36, 36);
+}
 
 svg {
   object-fit: fill;
 }
-
 /* Color changing icons i made last last course */
 /* Svg icon mask repeat fix from Zach Sausier https://stackoverflow.com/questions/55498806/why-is-css-mask-image-not-working-with-no-repeat */
 .icon,
@@ -269,25 +250,10 @@ svg {
 .icon {
   width: 1rem;
   height: 1rem;
-}
-
-.iconInput {
-  margin: auto 0;
-  width: 0.8rem;
-  height: 0.8rem;
-  background: whitesmoke;
-}
-
-.icon {
   margin: 0 0.15rem;
   background: rgb(84, 84, 88);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-}
-
-button:disabled,
-button:disabled:hover {
-  background: rgb(36, 36, 36);
 }
 
 .iconNav {

@@ -78,11 +78,14 @@ function addTask(task) {
 
 function parseLocalStorage() {
   tasks = JSON.parse(localStorage.getItem("tasks"));
+  if (tasks == null) {
+    tasks = [];
+  }
 }
 
 function loadTasks() {
   parseLocalStorage();
-  if (tasks.length <= 0) {
+  if (tasks == null || tasks.length <= 0) {
     taskListMessage();
   } else {
     reloadTasks();
