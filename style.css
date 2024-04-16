@@ -13,6 +13,7 @@ html {
   /* Gradient effect */
   /* Use div element inside body to fit */
   background: rgb(0, 0, 0);
+  width: 100vw;
 }
 
 body {
@@ -45,7 +46,6 @@ textarea {
 input[type="checkbox"] {
   width: 2rem;
   height: 2rem;
-  accent-color: ;
   border-radius: 0.75rem;
   vertical-align: middle;
   border: 0.2rem solid #c5bbbb;
@@ -87,6 +87,7 @@ input:checked + .check {
   border-radius: 3.24rem;
   border: 0.3rem solid rgb(0, 0, 0);
   font-family: monospace;
+  width: ;
 }
 
 #mainTaskList {
@@ -99,12 +100,16 @@ h2 {
   font-size: 2.4rem;
   font-weight: 500;
   margin: 0;
+  word-wrap: break-word;
+  width: ;
 }
 
 .title {
   margin-left: 1rem;
   margin-bottom: 0.5rem;
   line-height: 2rem;
+  word-break: break-all;
+  width: 85%;
 }
 
 p {
@@ -138,17 +143,6 @@ textarea {
   width: 100%;
   margin: 0;
   /* Create a ddiv or disable default styling */
-}
-
-label {
-  display: flex;
-  flex-direction: row;
-  font-weight: 100;
-  font-size: x-small;
-  /* color: #242424; */
-  color: whitesmoke;
-  margin: 0;
-  line-height: 2rem;
 }
 
 .optionsRow {

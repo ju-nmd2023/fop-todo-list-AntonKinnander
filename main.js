@@ -1,17 +1,32 @@
+//Declare
 let tasks = [];
-
+let editID = -1;
 const taskInput = document.getElementById("newTaskField");
 const taskList = document.getElementById("mainTaskList");
 const taskAddBtn = document.getElementById("newTaskButton");
-let editID = -1;
 
-function deleteTask(id) {
-  tasks.splice(id, 1);
-  reloadTasks();
-  saveTasks();
-  if (tasks.length < 1) {
-    taskListMessage(1);
+//Functions
+
+//Loading fromand saving to localStorage
+
+function parseLocalStorage() {
+  tasks = JSON.parse(localStorage.getItem("tasks"));
+  if (tasks == null) {
+    tasks = [];
   }
+}
+
+function loadTasks() {
+  parseLocalStorage();
+  if (tasks == null || tasks.length <= 0) {
+    taskListMessage();
+  } else {
+    reloadTasks();
+  }
+}
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function taskListMessage(msg) {
@@ -25,27 +40,7 @@ function taskListMessage(msg) {
   }
   taskList.appendChild(paragraph);
 }
-
-function toggleTaskStatus(id) {
-  if (tasks[id].statusDone) {
-    tasks[id].statusDone = false;
-  } else {
-    tasks[id].statusDone = true;
-  }
-  reloadTasks();
-  saveTasks();
-}
-
-function editTask(id) {
-  editID = id;
-  taskInput.value = tasks[id].title;
-  saveTasks();
-}
-function updateTask(id) {
-  tasks[id].title = taskInput.value;
-  reloadTasks();
-  saveTasks();
-}
+//Adding new tasks
 
 function processInput() {
   let task = {
@@ -76,24 +71,36 @@ function addTask(task) {
   saveTasks();
 }
 
-function parseLocalStorage() {
-  tasks = JSON.parse(localStorage.getItem("tasks"));
-  if (tasks == null) {
-    tasks = [];
+//Changing tasks and the tasklist
+
+function deleteTask(id) {
+  tasks.splice(id, 1);
+  reloadTasks();
+  saveTasks();
+  if (tasks.length < 1) {
+    taskListMessage(1);
   }
 }
 
-function loadTasks() {
-  parseLocalStorage();
-  if (tasks == null || tasks.length <= 0) {
-    taskListMessage();
+function toggleTaskStatus(id) {
+  if (tasks[id].statusDone) {
+    tasks[id].statusDone = false;
   } else {
-    reloadTasks();
+    tasks[id].statusDone = true;
   }
+  reloadTasks();
+  saveTasks();
 }
 
-function saveTasks() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+function editTask(id) {
+  editID = id;
+  taskInput.value = tasks[id].title;
+  saveTasks();
+}
+function updateTask(id) {
+  tasks[id].title = taskInput.value;
+  reloadTasks();
+  saveTasks();
 }
 
 function reloadTasks() {
@@ -109,14 +116,14 @@ function clearAllTasks() {
   taskList.innerHTML = "";
 }
 
+//Core function display and update tasks
 function displayTask(task) {
   let htmlCard = document.createElement("div");
   htmlCard.classList.add("card");
-  //Converted to be used as string, create a card with this specific structure, edit variable of title
-  //Want the right card structure with the buttons and everything
   let taskState;
   let buttonDisbled;
 
+  //Used for inserting variables into html if the task is done, checking checkboxes and disabling the edit button
   if (task.statusDone) {
     taskState = "checked";
     buttonDisbled = "disabled";
@@ -125,6 +132,7 @@ function displayTask(task) {
     buttonDisbled = "";
   }
 
+  //Create html with variables for taskname and status
   htmlCard.innerHTML =
     '      <div class="row">' +
     '        <input type="checkbox"' +
