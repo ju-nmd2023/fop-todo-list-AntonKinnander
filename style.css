@@ -5,6 +5,7 @@
 html,
 body {
   height: calc(100vh - 2rem);
+  width: calc(100vw - 2rem);
   margin: 0.5rem !important;
   overflow: hidden;
 }
@@ -13,7 +14,6 @@ html {
   /* Gradient effect */
   /* Use div element inside body to fit */
   background: rgb(0, 0, 0);
-  width: 100vw;
 }
 
 body {
@@ -87,7 +87,7 @@ input:checked + .check {
   border-radius: 3.24rem;
   border: 0.3rem solid rgb(0, 0, 0);
   font-family: monospace;
-  width: ;
+  width: calc(100vw - 2.5rem);
 }
 
 #mainTaskList {
@@ -109,7 +109,7 @@ h2 {
   margin-bottom: 0.5rem;
   line-height: 2rem;
   word-break: break-all;
-  width: 85%;
+  width: calc(100% - 8rem);
 }
 
 p {
@@ -148,7 +148,6 @@ textarea {
 .optionsRow {
   display: flex;
   margin: 0;
-  width: 100%;
 }
 
 textarea,

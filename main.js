@@ -45,11 +45,7 @@ function taskListMessage(msg) {
 function processInput() {
   let task = {
     title: "",
-    //date value
-    dueDate: 0,
-    category: "unsorted",
     statusDone: false,
-    isDivider: false,
   };
   task.title = taskInput.value.trim();
   if (task.title !== "") {
